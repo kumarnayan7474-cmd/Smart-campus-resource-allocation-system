@@ -1,8 +1,10 @@
-# Configurable weights for greedy allocation cost calculation
 GREEDY_CONFIG = {
     "WEIGHT_WASTED_CAPACITY": 1.0,
-    "WEIGHT_WALKING_DISTANCE": 2.5
+    "WEIGHT_WALKING_DISTANCE": 2.5,
+    "BATCH_WINDOW": 5
 }
+
+BATCH_WINDOW = 5
 
 # Priority Mapping
 PRIORITY_SCORES = {

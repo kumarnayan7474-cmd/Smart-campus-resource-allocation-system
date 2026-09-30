@@ -9,7 +9,7 @@ A full-stack web application that allocates campus resources (classrooms, labs, 
 All core algorithms are located in `backend/app/algorithms/`:
 
 1. **MaxHeap Priority Queue** (`heap.py`):
-   - Array-based binary Max-Heap holding pending resource requests ordered by priority score (`exam` > `regular_class` > `faculty_meeting` > `event` > `club_activity`).
+   - Array-based binary Max-Heap holding pending resource requests inside each batch window (`BATCH_WINDOW = 5`), ordered by priority score (`exam` > `regular_class` > `faculty_meeting` > `event` > `club_activity`).
    - Tie-breaker: earlier submission timestamp receives higher priority.
 2. **MinHeap Priority Queue** (`heap.py`):
    - Array-based binary Min-Heap used exclusively inside Dijkstra's algorithm to extract the unvisited node with minimum tentative distance.
@@ -17,13 +17,15 @@ All core algorithms are located in `backend/app/algorithms/`:
    - Weighted undirected graph stored using an Adjacency List.
    - Includes custom `bfs()` and `dfs()` for connectivity verification.
    - Custom `dijkstra(start_node)` using `MinHeap` to calculate shortest walking distance in meters and path from requester location to candidate resources.
-4. **Multi-Objective Greedy Engine with Preemption** (`greedy.py`):
-   - Repeatedly extracts highest-priority request from `MaxHeap`.
+4. **Multi-Objective Greedy Engine with Batch Windows & Preemption** (`greedy.py`):
+   - Groups incoming requests chronologically into arrival batch windows based on `submission_time`: $\text{batch\_id} = (\text{submission\_time} - 1) // \text{BATCH\_WINDOW}$.
+   - For each batch, loads all arriving requests into a fresh `MaxHeap`.
+   - Repeatedly extracts the highest-priority request using `extract_max()` and allocates it.
    - Filters candidate resources matching resource type & capacity requirements.
-   - Calculates candidate Greedy Cost:
+   - Minimizes Greedy Cost:
      $$\text{Cost} = (w_1 \times \text{wasted\_capacity}) + (w_2 \times \text{walking\_distance})$$
    - Checks slot availability (8:00 - 18:00 fixed 1-hour slots).
-   - If slot is occupied by lower-priority booking(s), executes **Preemption** to displace lower-priority bookings into the waitlist.
+   - If slot is occupied by lower-priority booking(s), executes **Preemption** to displace lower-priority bookings and re-enqueues the displaced request back into the same `MaxHeap` (max 1 retry).
 5. **Greedy Interval Scheduling** (`scheduler.py`):
    - Earliest Finish Time First algorithm used for resolving time-slot overlaps on resources.
 

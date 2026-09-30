@@ -80,8 +80,11 @@ export default function AllocationStepper({ stepLogs = [], onHighlightPath, onNa
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Request details */}
         <div className="glass-panel p-5 space-y-3">
-          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-800 pb-2">
-            MaxHeap Extracted Request
+          <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-800 pb-2 flex justify-between items-center">
+            <span>MaxHeap Extracted Request</span>
+            <span className="text-cyan-400 font-mono text-[11px] font-semibold lowercase">
+              Batch {currentStep.batch_id ?? 0} | heap size {currentStep.heap_size_before_extract ?? 0}
+            </span>
           </h4>
           <div className="flex justify-between items-center">
             <span className="text-slate-400 text-sm">Priority Score:</span>
