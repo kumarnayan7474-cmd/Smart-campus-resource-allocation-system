@@ -100,6 +100,7 @@ export default function App() {
             nodes={graphData.nodes}
             edges={graphData.edges}
             highlightedPath={highlightedPath}
+            darkMode={darkMode}
           />
         )}
 
