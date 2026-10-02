@@ -9,8 +9,8 @@
   }
 
   body.light-mode {
-    background-color: #f8fafc;
-    color: #1e293b;
+    background-color: #f1f5f9;
+    color: #0f172a;
   }
 }
 
@@ -22,8 +22,122 @@
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
+/* Light Mode Comprehensive Design System */
 body.light-mode .glass-panel {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-color: rgba(226, 232, 240, 0.9);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
 }
+
+/* Text adjustments for light mode */
+body.light-mode .text-slate-100,
+body.light-mode .text-slate-200,
+body.light-mode .text-slate-300 {
+  color: #0f172a !important;
+}
+
+body.light-mode .text-slate-400 {
+  color: #475569 !important;
+}
+
+body.light-mode .text-slate-500 {
+  color: #64748b !important;
+}
+
+body.light-mode .text-cyan-300,
+body.light-mode .text-cyan-400 {
+  color: #0284c7 !important;
+}
+
+/* Card metrics & titles in light mode */
+body.light-mode .glass-panel .text-white:not(button *):not(button) {
+  color: #0f172a !important;
+}
+
+/* Background & Border Overrides in Light Mode */
+body.light-mode .bg-slate-900,
+body.light-mode .bg-slate-900\/60,
+body.light-mode .bg-slate-900\/80,
+body.light-mode .bg-slate-900\/50,
+body.light-mode .bg-slate-950,
+body.light-mode .bg-slate-950\/60,
+body.light-mode .bg-slate-950\/50 {
+  background-color: #f8fafc !important;
+}
+
+body.light-mode .border-slate-800,
+body.light-mode .border-slate-800\/60,
+body.light-mode .border-slate-800\/40,
+body.light-mode .border-slate-800\/80 {
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode .bg-cyan-950\/20 {
+  background-color: #f0f9ff !important;
+  border-color: #bae6fd !important;
+}
+
+/* Navigation bar in light mode */
+body.light-mode nav {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode nav button:not(.bg-gradient-to-r) {
+  color: #475569 !important;
+}
+
+body.light-mode nav button:not(.bg-gradient-to-r):hover {
+  color: #0f172a !important;
+  background-color: #ffffff !important;
+}
+
+/* Form controls in light mode */
+body.light-mode input[type="text"],
+body.light-mode input[type="number"],
+body.light-mode select,
+body.light-mode textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode input[type="text"]:focus,
+body.light-mode input[type="number"]:focus,
+body.light-mode select:focus,
+body.light-mode textarea:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2) !important;
+}
+
+/* Code & pre blocks in light mode */
+body.light-mode code {
+  background-color: #e2e8f0 !important;
+  color: #0369a1 !important;
+}
+
+/* Table styling in light mode */
+body.light-mode table tr:hover {
+  background-color: #f1f5f9 !important;
+}
+
+body.light-mode table th {
+  background-color: #f8fafc !important;
+  color: #475569 !important;
+}
+
+/* Top Banner special styling for contrast in light mode */
+body.light-mode .glass-panel.bg-gradient-to-r {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+  border-color: #334155 !important;
+}
+
+body.light-mode .glass-panel.bg-gradient-to-r .text-white,
+body.light-mode .glass-panel.bg-gradient-to-r .text-slate-300 {
+  color: #ffffff !important;
+}
+
+body.light-mode .glass-panel.bg-gradient-to-r .text-slate-300 {
+  color: #cbd5e1 !important;
+}
+
